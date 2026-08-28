@@ -1,0 +1,458 @@
+/* ==========================================================================
+   Hermanos Jota — Sistema de diseño
+   Manual de marca 2026 · Mobile first · Custom properties
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap");
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Color */
+  --color-primary: #a0522d; /* Siena Tostado */
+  --color-secondary: #87a96b; /* Verde Salvia */
+  --color-bg-main: #f5e6d3; /* Alabastro Cálido */
+  --color-accent-gold: #d4a437; /* Vara de Oro */
+  --color-accent-rose: #c47a6d; /* Rosa Polvoriento */
+  --color-text-main: #2c221e; /* Texto oscuro complementario */
+  --color-text-light: #f5e6d3; /* Texto claro */
+  --color-surface: #fffaf4; /* Superficie de tarjeta */
+  --color-overlay: rgb(245 230 211 / 0.86);
+
+  /* Tipografía */
+  --font-primary: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-size-body: 1rem;
+  --font-size-caption: 0.75rem;
+  --line-height-body: 1.6;
+  --letter-heading: 0.1em;
+  --letter-cta: 0.08em;
+  --letter-caption: 0.02em;
+
+  /* Espacio y forma */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --border-radius: 4px;
+  --header-height: 4.5rem;
+  --content-max: 72rem;
+  --shadow-soft: 0 8px 28px rgb(44 34 30 / 0.08);
+
+  /* Movimiento */
+  --ease: 200ms ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reboot global
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--ease);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   3. Jerarquía tipográfica
+   -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 var(--spacing-md);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.caption,
+small {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-caption);
+  color: rgb(44 34 30 / 0.72);
+}
+
+/* --------------------------------------------------------------------------
+   4. Layout de página
+   -------------------------------------------------------------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: min(100% - var(--spacing-lg), var(--content-max));
+  margin-inline: auto;
+  padding-block: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-block: var(--spacing-xl);
+  }
+}
+
+section + section {
+  margin-top: var(--spacing-xl);
+}
+
+/* --------------------------------------------------------------------------
+   5. Header / Navbar
+   -------------------------------------------------------------------------- */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  min-height: var(--header-height);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-overlay);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgb(160 82 45 / 0.12);
+}
+
+header > a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+header > a:hover {
+  color: var(--color-secondary);
+}
+
+.logo {
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    width: 120px; /* mínimo digital del manual */
+  }
+
+  header {
+    padding-inline: var(--spacing-lg);
+  }
+}
+
+nav[aria-label="Navegación principal"] ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm) var(--spacing-lg);
+}
+
+nav[aria-label="Navegación principal"] a {
+  color: var(--color-text-main);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-cta);
+  text-transform: uppercase;
+}
+
+nav[aria-label="Navegación principal"] a:hover,
+nav[aria-label="Navegación principal"] a[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero
+   -------------------------------------------------------------------------- */
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl) 0;
+  max-width: 40rem;
+}
+
+#hero p {
+  margin-bottom: 0;
+}
+
+#hero .btn {
+  margin-top: var(--spacing-sm);
+}
+
+/* --------------------------------------------------------------------------
+   7. Productos destacados (contenedor listo para JS)
+   -------------------------------------------------------------------------- */
+
+#contenedor-destacados {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  #contenedor-destacados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #contenedor-destacados {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Botones y CTAs
+   -------------------------------------------------------------------------- */
+
+.btn,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-cta);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--ease),
+    color var(--ease),
+    border-color var(--ease),
+    transform var(--ease);
+}
+
+.btn:hover,
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Principal: Siena Tostado */
+.btn,
+.btn-primary,
+button:not(.btn-secondary):not(.btn-ghost) {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border: 1px solid transparent;
+}
+
+.btn:hover,
+.btn-primary:hover,
+button:not(.btn-secondary):not(.btn-ghost):hover {
+  background-color: #8a4526;
+  color: var(--color-text-light);
+}
+
+/* Secundario: trazo */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+/* --------------------------------------------------------------------------
+   9. Tarjetas
+   -------------------------------------------------------------------------- */
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid rgb(212 164 55 / 0.35);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.card h3 {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* --------------------------------------------------------------------------
+   10. Badge de sustentabilidad
+   -------------------------------------------------------------------------- */
+
+.badge-sustainability {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-caption);
+  font-weight: 500;
+  letter-spacing: var(--letter-cta);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   11. Variantes invertidas
+   -------------------------------------------------------------------------- */
+
+.theme-dark,
+.card-inverted {
+  background-color: var(--color-primary);
+  color: var(--color-bg-main);
+}
+
+.theme-dark h1,
+.theme-dark h2,
+.theme-dark h3,
+.card-inverted h1,
+.card-inverted h2,
+.card-inverted h3 {
+  color: var(--color-bg-main);
+}
+
+.theme-dark a,
+.card-inverted a {
+  color: var(--color-accent-gold);
+}
+
+.theme-dark .caption,
+.theme-dark small,
+.card-inverted .caption,
+.card-inverted small {
+  color: rgb(245 230 211 / 0.78);
+}
+
+.theme-dark .btn,
+.card-inverted .btn {
+  background-color: var(--color-bg-main);
+  color: var(--color-primary);
+}
+
+.theme-dark .btn-secondary,
+.card-inverted .btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-bg-main);
+  color: var(--color-bg-main);
+}
+
+/* --------------------------------------------------------------------------
+   12. Footer
+   -------------------------------------------------------------------------- */
+
+footer {
+  margin-top: auto;
+  padding: var(--spacing-lg);
+  border-top: 1px solid rgb(160 82 45 / 0.18);
+  background-color: rgb(160 82 45 / 0.06);
+}
+
+footer p,
+footer address {
+  margin: 0 0 var(--spacing-sm);
+}
+
+footer a {
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    align-items: start;
+  }
+}
