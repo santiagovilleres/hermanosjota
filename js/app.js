@@ -98,10 +98,16 @@ if (contenedor) {
       .map(
         (producto) => `
         <article class="card">
-          <img src="${producto.imagen}" alt="${producto.nombre}" />
+          <img src="${encodeURI(producto.imagen)}" alt="${producto.nombre}" />
           <h3>${producto.nombre}</h3>
           <p>$${producto.precio.toLocaleString("es-AR")}</p>
-          <button class="btn" data-id="${producto.id}">Agregar al carrito</button>
+          <button
+            class="btn"
+            data-id="${producto.id}"
+            aria-label="Agregar ${producto.nombre} al carrito"
+          >
+            Agregar al carrito
+          </button>
         </article>
       `
       )
