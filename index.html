@@ -8,28 +8,12 @@
       name="description"
       content="Mueblería Hermanos Jota. Artesanía, herencia e innovación. Showroom en Av. San Juan 2847, CABA."
     />
-    <!-- Estilos externos: ningún estilo en el HTML (consigna: CSS en archivo separado). -->
     <link rel="icon" href="logo.svg" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!--
-      ARQUITECTURA DE LA HOME
-      1. header  → identidad de marca + navegación global
-      2. main    → contenido exclusivo de esta página
-         2.1 #hero                  → propuesta de valor y CTA
-         2.2 #productos-destacados  → vitrina (HTML vacío; JS inyecta 3–4 productos)
-      3. footer  → datos de contacto y operación (dirección, horarios, email)
-    -->
-
-    <!-- ========== 1. ENCABEZADO GLOBAL ==========
-         Se repite en todas las páginas. Contiene el logo (enlace a Inicio)
-         y el nav principal. Los destinos coinciden con la consigna:
-         Inicio, Catálogo, Contacto.
-    -->
     <header>
       <a href="index.html" aria-label="Hermanos Jota — Inicio">
-        <!-- Isotipo oficial (logo.svg). El texto visible junto al enlace completa el nombre de marca. -->
         <img class="logo" src="logo.svg" alt="" aria-hidden="true" />
         <span>Hermanos Jota</span>
       </a>
@@ -43,12 +27,7 @@
       </nav>
     </header>
 
-    <!-- ========== 2. CONTENIDO PRINCIPAL DE LA HOME ========== -->
     <main>
-      <!-- ----- 2.1 Hero Banner -----
-           Primera impresión de marca. Un solo h1 por página.
-           El CTA lleva al catálogo (flujo de descubrimiento del e-commerce).
-      -->
       <section id="hero" aria-labelledby="titulo-hero">
         <h1 id="titulo-hero">Muebles que no solo sirven: alimentan el alma</h1>
         <p>
@@ -58,20 +37,12 @@
         <a class="btn" href="productos.html">Explorar el catálogo</a>
       </section>
 
-      <!-- ----- 2.2 Productos destacados -----
-           El h2 define el bloque. El contenedor queda vacío a propósito:
-           JavaScript inyectará 3–4 tarjetas (array de objetos + DOM).
-      -->
       <section id="productos-destacados" aria-labelledby="titulo-destacados">
         <h2 id="titulo-destacados">Piezas destacadas</h2>
         <div id="contenedor-destacados"></div>
       </section>
     </main>
 
-    <!-- ========== 3. PIE DE PÁGINA GLOBAL ==========
-         Datos operativos del showroom (manual de marca / consigna).
-         address para domicilio; time para horarios; mailto para email.
-    -->
     <footer>
       <p>
         <strong>Hermanos Jota — Casa Taller</strong>
@@ -86,9 +57,6 @@
       </p>
     </footer>
 
-    <!-- Scripts al final del body (no bloquean el pintado inicial).
-         Aquí se cargará el array de productos y el render de #contenedor-destacados.
-    -->
     <script src="js/app.js" defer></script>
   </body>
 </html>

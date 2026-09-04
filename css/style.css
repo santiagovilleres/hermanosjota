@@ -290,6 +290,52 @@ nav[aria-label="Navegación principal"] a[aria-current="page"] {
 }
 
 /* --------------------------------------------------------------------------
+   7.1 Tabla de envíos
+   -------------------------------------------------------------------------- */
+
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+  border: 1px solid rgb(212 164 55 / 0.35);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+caption {
+  padding-bottom: var(--spacing-sm);
+  text-align: left;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-caption);
+  color: rgb(44 34 30 / 0.72);
+}
+
+th,
+td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid rgb(160 82 45 / 0.18);
+}
+
+thead th {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-cta);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: rgb(160 82 45 / 0.06);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* --------------------------------------------------------------------------
    8. Botones y CTAs
    -------------------------------------------------------------------------- */
 
