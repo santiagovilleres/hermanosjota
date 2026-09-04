@@ -1,13 +1,3 @@
-// ============================================================
-// Hermanos Jota — Catálogo dinámico
-// Archivo: js/app.js
-// Carga el catálogo, lo renderiza en #contenedor-destacados y
-// agrega el evento de "agregar al carrito" a cada producto.
-// ============================================================
-
-// 1. Catálogo en un array de objetos
-// Cada producto tiene id, nombre, precio e imagen.
-// Las imágenes están en la carpeta "catalogo/" de la raíz.
 const productos = [
   {
     id: 1,
@@ -77,23 +67,17 @@ const productos = [
   },
 ];
 
-// 2. Función asíncrona que simula una petición a la API
-// usando async/await y setTimeout (2 segundos).
 function obtenerProductos() {
   return new Promise((resolve) => {
     setTimeout(() => resolve(productos), 2000);
   });
 }
 
-// Contenedor donde se inyectan las tarjetas.
-// En index.html muestra solo los destacados; en productos.html el catálogo completo.
 const contenedor = document.getElementById("contenedor-destacados");
 if (contenedor) {
   const esCatalogo = window.location.pathname.includes("productos");
 
-  // 3. Renderizado dinámico vía DOM
   function renderizarProductos(lista) {
-    // Podemos usar innerHTML porque los datos son de la propia app (sin user input)
     contenedor.innerHTML = lista
       .map(
         (producto) => `
@@ -114,9 +98,6 @@ if (contenedor) {
       .join("");
   }
 
-  // 4. Interactividad con addEventListener
-  // Un único listener sobre el contenedor ("event delegation") para
-  // cualquier botón que se renderice.
   contenedor.addEventListener("click", (evento) => {
     const boton = evento.target.closest("button");
     if (!boton) return;
@@ -127,8 +108,6 @@ if (contenedor) {
     }
   });
 
-  // Carga inicial: muestra "Cargando catálogo..." y luego renderiza.
-  // En la home solo se muestran los 4 primeros (destacados).
   (async function iniciar() {
     contenedor.innerHTML = "<p>Cargando catálogo...</p>";
     const lista = await obtenerProductos();

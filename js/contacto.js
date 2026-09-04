@@ -1,7 +1,3 @@
-// Hermanos Jota — Formulario de contacto.
-// Valida los campos en el submit y muestra los errores debajo de cada uno.
-// Todavía no hay backend: el envío se simula limpiando el formulario.
-
 const formulario = document.getElementById("form-contacto");
 
 if (formulario) {
@@ -11,7 +7,6 @@ if (formulario) {
   const LARGO_MINIMO_NOMBRE = 2;
   const LARGO_MINIMO_MENSAJE = 10;
 
-  // Cada regla devuelve el mensaje de error, o "" si el valor es válido.
   const reglas = {
     nombre(valor) {
       if (!valor) return "Ingresá tu nombre.";
@@ -65,7 +60,6 @@ if (formulario) {
     estado.textContent = "¡Gracias! Recibimos tu mensaje y te respondemos pronto.";
   });
 
-  // Al corregir un campo ya marcado, el error desaparece sin esperar al submit.
   formulario.addEventListener("input", (evento) => {
     const campo = evento.target.id;
     if (reglas[campo] && evento.target.getAttribute("aria-invalid") === "true") {
