@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto — Hermanos Jota</title>
+    <meta
+      name="description"
+      content="Escribinos o visitanos en el showroom de Hermanos Jota. Av. San Juan 2847, CABA."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" aria-label="Hermanos Jota — Inicio">
+        <img class="logo" src="logo.svg" alt="" aria-hidden="true" />
+        <span>Hermanos Jota</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Catálogo</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="contacto" aria-labelledby="titulo-contacto">
+        <h1 id="titulo-contacto">Contacto</h1>
+        <p>
+          Contanos qué pieza estás buscando y te respondemos dentro de las 48hs
+          hábiles.
+        </p>
+
+        <form id="form-contacto" novalidate>
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              autocomplete="name"
+              required
+            />
+            <p class="error" id="error-nombre" role="alert"></p>
+          </div>
+
+          <div class="campo">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+            <p class="error" id="error-email" role="alert"></p>
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+            <p class="error" id="error-mensaje" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn">Enviar mensaje</button>
+          <p id="form-estado" role="status"></p>
+        </form>
+      </section>
+
+      <section id="datos-showroom" aria-labelledby="titulo-showroom">
+        <h2 id="titulo-showroom">Visitanos</h2>
+        <div class="card">
+          <h3>Casa Taller</h3>
+          <address>Av. San Juan 2847, CABA</address>
+          <p class="caption">
+            <span>Horarios:</span>
+            Lun-Vie 10 a 19hs, Sab 10 a 14hs
+          </p>
+          <p>
+            <a href="mailto:info@hermanosjota.com.ar"
+              >info@hermanosjota.com.ar</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        <strong>Hermanos Jota — Casa Taller</strong>
+      </p>
+      <address>Av. San Juan 2847, CABA</address>
+      <p class="caption">
+        <span>Horarios:</span>
+        Lun-Vie 10 a 19hs, Sab 10 a 14hs
+      </p>
+      <p>
+        <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a>
+      </p>
+    </footer>
+
+    <script src="js/contacto.js" defer></script>
+  </body>
+</html>
