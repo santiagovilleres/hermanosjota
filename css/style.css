@@ -456,3 +456,82 @@ footer a {
     align-items: start;
   }
 }
+
+/* --------------------------------------------------------------------------
+   13. Formulario
+   -------------------------------------------------------------------------- */
+
+form {
+  display: grid;
+  gap: var(--spacing-md);
+  max-width: 36rem;
+}
+
+.campo {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+label {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-cta);
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgb(160 82 45 / 0.35);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  transition:
+    border-color var(--ease),
+    box-shadow var(--ease);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: var(--color-accent-rose);
+}
+
+.error {
+  margin: 0;
+  min-height: 1rem;
+  color: var(--color-accent-rose);
+  font-size: var(--font-size-caption);
+  line-height: 1.3;
+}
+
+.error:empty {
+  min-height: 0;
+}
+
+#form-estado {
+  margin: 0;
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+form .btn {
+  justify-self: start;
+}
